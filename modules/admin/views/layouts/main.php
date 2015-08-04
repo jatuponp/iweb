@@ -43,22 +43,15 @@ $this->registerJs('$().scroll(function(){$(".app-title").css("top",Math.max(0,25
         ?>
 
         <div class="container-fluid">
-            <div class="row app-title">
-                <span><?php echo Yii::$app->name; ?></span>
-                <div class="pull-right">
-                    สำหรับเจ้าหน้าที่
-                </div>
-            </div>
             <div class="row">
-                <div class="col-xs-3 col-md-2" style="background-color: #FFFFFF;">
+                <div class="col-xs-3 col-md-2">
                     <?php require 'menus.php'; ?>
                 </div>
-                <div class="col-xs-12 col-sm-9 col-md-10">
+                <div class="col-xs-12 col-sm-9 col-md-10" style="background-color: #eee; border-left: 1px solid #DDD; min-height: 800px;">
                     <?= $content ?>
                 </div>
             </div>
         </div>
-        <br/>
 
         <?php $this->endBody() ?>
     </body>
