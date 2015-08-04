@@ -1,46 +1,39 @@
 <?php
+
 use yii\helpers\Html;
-use yii\bootstrap\ActiveForm;
+use yii\widgets\ActiveForm;
 
-/* @var $this yii\web\View */
-/* @var $form yii\bootstrap\ActiveForm */
-/* @var $model app\models\LoginForm */
-
-$this->title = 'Login';
-$this->params['breadcrumbs'][] = $this->title;
+/**
+ * @var yii\web\View $this
+ * @var yii\widgets\ActiveForm $form
+ * @var app\models\LoginForm $model
+ */
+$this->title = 'เข้าสู่ระบบ';
 ?>
 <div class="site-login">
-    <h1><?= Html::encode($this->title) ?></h1>
+    <br/>
+    <div class="col-sm-7">
+        <!--<img src="<?php echo Yii::getAlias('@web'); ?>/images/log-1.jpg" width="100%" />-->
+    </div>
+    <div class="col-sm-5">
+        <h1><?= Html::encode($this->title) ?></h1>
 
-    <p>Please fill out the following fields to login:</p>
+        <!--<p>ลงชื่อเข้าใช้งานด้วย <br/>บัญชีผู้ใช้ของมหาวิทยาลัยขอนแก่น</p>-->
 
-    <?php $form = ActiveForm::begin([
-        'id' => 'login-form',
-        'options' => ['class' => 'form-horizontal'],
-        'fieldConfig' => [
-            'template' => "{label}\n<div class=\"col-lg-3\">{input}</div>\n<div class=\"col-lg-8\">{error}</div>",
-            'labelOptions' => ['class' => 'col-lg-1 control-label'],
-        ],
-    ]); ?>
+        <?php
+        $form = ActiveForm::begin([
+                    'id' => 'login-form',
+        ]);
+        ?>
 
-    <?= $form->field($model, 'username') ?>
+        <?= $form->field($model, 'username') ?>
+        <?= $form->field($model, 'password')->passwordInput() ?>
+        <?= $form->field($model, 'rememberMe')->checkbox() ?>
 
-    <?= $form->field($model, 'password')->passwordInput() ?>
+        <?= Html::submitButton('เข้าสู่ระบบ', ['class' => 'btn btn-primary', 'name' => 'login-button', 'style' => 'width: 150px;']) ?>
 
-    <?= $form->field($model, 'rememberMe', [
-        'template' => "<div class=\"col-lg-offset-1 col-lg-3\">{input}</div>\n<div class=\"col-lg-8\">{error}</div>",
-    ])->checkbox() ?>
-
-    <div class="form-group">
-        <div class="col-lg-offset-1 col-lg-11">
-            <?= Html::submitButton('Login', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
-        </div>
+        <?php ActiveForm::end(); ?>
+        <br/><br/><br/><br/>
     </div>
 
-    <?php ActiveForm::end(); ?>
-
-    <div class="col-lg-offset-1" style="color:#999;">
-        You may login with <strong>admin/admin</strong> or <strong>demo/demo</strong>.<br>
-        To modify the username/password, please check out the code <code>app\models\User::$users</code>.
-    </div>
 </div>

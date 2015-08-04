@@ -38,11 +38,18 @@ AppAsset::register($this);
                             <div class="col-sm-12  hidden-xs">
                                 <div class="pull-right">
                                     <a href="<?= Url::to(['site/index', '_lang' => 'th-TH']) ?>" title="ภาษาไทย">
-                                    <img src="<?= Yii::getAlias('@web') ?>/images/lang-th.png" width="38px" class="pull-right" style="padding: 2px; "/>
-                                </a>
-                                <a href="<?= Url::to(['site/index', '_lang' => 'en-EN']) ?>" title="English">
-                                    <img src="<?= Yii::getAlias('@web') ?>/images/lang-en.png" width="38px" class="pull-right" style="padding: 2px; margin-left: 10px;"/>
-                                </a>
+                                        <img src="<?= Yii::getAlias('@web') ?>/images/lang-th.png" width="38px" class="pull-right" style="padding: 2px; "/>
+                                    </a>
+                                    <a href="<?= Url::to(['site/index', '_lang' => 'en-EN']) ?>" title="English">
+                                        <img src="<?= Yii::getAlias('@web') ?>/images/lang-en.png" width="38px" class="pull-right" style="padding: 2px; margin-left: 10px;"/>
+                                    </a>
+                                    <?php
+                                    if(Yii::$app->user->isGuest){
+                                    ?>
+                                    <a href="<?= Url::to(['site/login']) ?>">Login</a>
+                                    <?php }else{ ?>
+                                    <a href="<?= Url::to(['site/logout']) ?>" data-method="post">Logout</a>
+                                    <?php } ?>
                                 </div>
                             </div>
                         </div>
