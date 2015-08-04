@@ -25,6 +25,10 @@ $config = [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
         ],
+        'authManager' => [
+            'class' => 'yii\rbac\DbManager',
+            'defaultRoles' => ['guest'],
+        ],
         'mailer' => [
             'class' => 'yii\swiftmailer\Mailer',
             // send all mails to a file by default. You have to set
@@ -42,6 +46,11 @@ $config = [
             ],
         ],
         'db' => require(__DIR__ . '/db.php'),
+    ],
+    'modules' => [
+        'admin' => [
+            'class' => 'app\modules\admin\Module',
+        ]
     ],
     'params' => $params,
 ];
