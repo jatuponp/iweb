@@ -33,7 +33,9 @@
         "kartik-v/yii2-nav-x": "*",
 	"kartik-v/yii2-social": "*",
         "kartik-v/yii2-icons": "*",
-	"yurkinx/yii2-image": "*"
+	"yurkinx/yii2-image": "*",
+        "miloschuman/yii2-highcharts-widget": "*",
+        "newerton/yii2-fancybox": "*"
     },
     "config": {
         "process-timeout": 1800
