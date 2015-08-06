@@ -6,8 +6,11 @@ use miloschuman\highcharts\Highcharts;
 
 $this->title = 'สถิติการเยื่ยมชมเว็บไซต์';
 ?>
-<div class="site-stat">
+<div class="row">
     <div class="page-header"><?= Html::encode($this->title) ?></div>
+</div>
+<br/>
+<div class="site-stat">
     <div class="row">
         <?php
         $form = ActiveForm::begin([

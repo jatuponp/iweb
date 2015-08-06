@@ -12,11 +12,14 @@ use yii\grid\DataColumn;
  */
 $this->title = 'จัดการข้อมูลผู้ใช้';
 ?>
-<div class="site-login">
+<div class="row">
     <div class="page-header"><?= Html::encode($this->title) ?></div>
+</div><br/>
+<div class="site-login">
+
     <div class="row">
         <div class="col-lg-4">
-            <a href="index.php?r=content/update" class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i> เพิ่มผู้ใช้</a>
+            <a href="index.php?r=content/update" class="btn btn-danger"><i class="glyphicon glyphicon-plus"></i> เพิ่มผู้ใช้</a>
         </div>
         <div class="col-lg-8">
             <?php
@@ -49,9 +52,11 @@ $this->title = 'จัดการข้อมูลผู้ใช้';
             [
                 'headerOptions' => ['width' => '20%'],
                 'header' => 'Name',
-                'value' => function($model) { return $model->firstName . ' ' . $model->lastName;},
+                'value' => function($model) {
+            return $model->firstName . ' ' . $model->lastName;
+        },
             ],
-                        [
+            [
                 'headerOptions' => ['width' => '40%'],
                 'header' => 'Email',
                 'attribute' => 'email',

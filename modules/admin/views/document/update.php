@@ -27,26 +27,31 @@ $this->title = 'แฟ้มเอกสาร';
                 ],
     ]);
     ?>
-    <div class="page-header">
-        <?= Html::encode($this->title) ?> [<?php echo ($model->id) ? "แก้ไข" : "สร้างใหม่"; ?>]
-        <div class="form-group pull-right">
-            <?= Html::submitButton('<i class="glyphicon glyphicon-ok"></i> บันทึกข้อมูล', ['class' => 'btn btn-primary']) ?>
-            <?= Html::resetButton('<i class="glyphicon glyphicon-remove"></i> ยกเลิก', ['class' => 'btn', 'onclick' => 'history.back();']) ?>
+    <div class="row">
+        <div class="page-header">
+            <?= Html::encode($this->title) ?> [<?php echo ($model->id) ? "แก้ไข" : "สร้างใหม่"; ?>]
+            <div class="form-group pull-right">
+                <?= Html::submitButton('<i class="glyphicon glyphicon-ok"></i> บันทึกข้อมูล', ['class' => 'btn btn-danger']) ?>
+                <?= Html::resetButton('<i class="glyphicon glyphicon-remove"></i> ยกเลิก', ['class' => 'btn', 'onclick' => 'history.back();']) ?>
+            </div>
         </div>
     </div>
+    <br/>
     <div class="row">
         <div class="col-lg-8">
             <?= $form->field($model, 'cid')->dropDownList(['9' => 'ข่าวประชาสัมพันธ์บุคลากรคณะบริหารธุรกิจ', '12' => 'หน่วยอาคารและสถานที่'], [ 'style' => 'margin-right: 10px; width: 300px;']); ?>
             <?= $form->field($model, 'title')->input('text', ['placeholder' => 'พิมพ์ชื่อเอกสารที่นี้']) ?>
-            <?= $form->field($model, 'import')->widget(FileInput::classname(), [
+            <?=
+            $form->field($model, 'import')->widget(FileInput::classname(), [
                 'pluginOptions' => [
                     'showPreview' => false,
                     'showCaption' => true,
                     'showRemove' => true,
                     'showUpload' => false,
-                    'initialCaption' => (($model->file_name)? $model->file_name:'' )
+                    'initialCaption' => (($model->file_name) ? $model->file_name : '' )
                 ]
-            ])->hint(' *.doc, *.docx, *.xls, *.xlsx *.pdf') ?>
+            ])->hint(' *.doc, *.docx, *.xls, *.xlsx *.pdf')
+            ?>
             <?= $form->field($model, 'id', ['options' => ['class' => 'sr-only']])->hiddenInput() ?>
             <?= $form->field($model, 'langs', ['options' => ['class' => 'sr-only']])->hiddenInput() ?>
         </div>

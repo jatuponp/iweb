@@ -28,13 +28,16 @@ $this->title = 'Menus Management';
                 ],
     ]);
     ?>
+    <div class="row">
     <div class="page-header">
         <?= Html::encode($this->title) ?> [<?php echo ($model->id) ? "แก้ไข" : "สร้างใหม่"; ?>]
         <div class="form-group pull-right">
-            <?= Html::submitButton('<i class="glyphicon glyphicon-ok"></i> บันทึกข้อมูล', ['class' => 'btn btn-primary']) ?>
+            <?= Html::submitButton('<i class="glyphicon glyphicon-ok"></i> บันทึกข้อมูล', ['class' => 'btn btn-danger']) ?>
             <?= Html::resetButton('<i class="glyphicon glyphicon-remove"></i> ยกเลิก', ['class' => 'btn']) ?>
         </div>
     </div>
+    </div>
+    <br/>
     <div class="row">
         <div class="col-sm-8">
             <?= $form->field($model, 'names')->input('text') ?>

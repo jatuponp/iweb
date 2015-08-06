@@ -14,18 +14,21 @@ use yii\bootstrap\Modal;
  */
 $this->title = 'บริหารภาพไสลด์';
 ?>
-<div class="slider-index">
+<div class="row">
     <div class="page-header"><?= Html::encode($this->title) ?></div>
+</div>
+<br/>
+<div class="slider-index">    
     <div class="row">
         <div class="col-lg-4">
-            <a href="<?= Url::to(['slider/update']) ?>" class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i> เพิ่มภาพสไลด์</a>
+            <a href="<?= Url::to(['slider/update']) ?>" class="btn btn-danger"><i class="glyphicon glyphicon-plus"></i> เพิ่มภาพสไลด์</a>
         </div>
         <div class="col-lg-8">
             <?php
             Modal::begin([
                 'options' => ['id' => 'new'],
                 'header' => '<h4 style="margin:0; padding:0">ประเภทภาพสไลด์ </h4>',
-                'toggleButton' => ['label' => '<i class="glyphicon glyphicon-th-large"></i>', 'class' => 'btn btn-primary pull-right'],
+                'toggleButton' => ['label' => '<i class="glyphicon glyphicon-th-large"></i>', 'class' => 'btn btn-danger pull-right'],
             ]);
             Pjax::begin();
             $form = ActiveForm::begin([

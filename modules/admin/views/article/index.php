@@ -14,11 +14,14 @@ use yii\widgets\Pjax;
  */
 $this->title = 'บริหารบทความ';
 ?>
-<div class="site-login">
-    <div class="page-header"><?= Html::encode($this->title) ?></div>
+<div class="row">
+    <div class="page-header"><i class="glyphicon glyphicon-book"></i>&nbsp;<?= Html::encode($this->title) ?></div>
+</div>
+<br/>
+<div class="site-login">    
     <div class="row">
         <div class="col-lg-4">
-            <a href="<?= Url::to(['/cms/article/update']) ?>" class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i> เขียนบทความ</a>
+            <a href="<?= Url::to(['update']) ?>" class="btn btn-danger"><i class="glyphicon glyphicon-plus"></i> เขียนบทความ</a>
         </div>
         <div class="col-lg-8">
             <?php
@@ -43,7 +46,7 @@ $this->title = 'บริหารบทความ';
             <div class="row" style="margin-top: 10px;">
                 <div class="col-lg-12">
                     <?= $form->field($model, 'search')->input('text', [ 'style' => 'width: 300px']); ?>
-                    <?= Html::submitButton('<i class="glyphicon glyphicon-search"></i> ค้นหา', [ 'class' => 'btn btn-primary']) ?>
+                    <?= Html::submitButton('<i class="glyphicon glyphicon-search"></i> ค้นหา', [ 'class' => 'btn btn-danger']) ?>
                 </div>
             </div>
 

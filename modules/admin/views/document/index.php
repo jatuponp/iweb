@@ -12,13 +12,17 @@ use yii\widgets\Pjax;
  * @var yii\widgets\ActiveForm $form
  * @var app\models\LoginForm $model
  */
-$this->title = 'บริหารแฟ้มเอกสาร';
+$this->title = 'บริหารเอกสารดาวน์โหลด';
 ?>
-<div class="document-index">
+<div class="row">
     <div class="page-header"><?= Html::encode($this->title) ?></div>
+</div>
+<br/>
+<div class="document-index">
+    
     <div class="row">
         <div class="col-lg-4">
-            <a href="<?= Url::to(['update']) ?>" class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i> เพิ่มแฟ้มเอกสาร</a>
+            <a href="<?= Url::to(['update']) ?>" class="btn btn-danger"><i class="glyphicon glyphicon-plus"></i> เพิ่มแฟ้มเอกสาร</a>
         </div>
         <div class="col-lg-8">
             <?php
@@ -43,7 +47,7 @@ $this->title = 'บริหารแฟ้มเอกสาร';
             <div class="row" style="margin-top: 10px;">
                 <div class="col-lg-12">
                     <?= $form->field($model, 'search')->input('text', [ 'style' => 'width: 300px']); ?>
-                    <?= Html::submitButton('<i class="glyphicon glyphicon-search"></i> ค้นหา', [ 'class' => 'btn btn-primary']) ?>
+                    <?= Html::submitButton('<i class="glyphicon glyphicon-search"></i> ค้นหา', [ 'class' => 'btn btn-danger']) ?>
                 </div>
             </div>
 

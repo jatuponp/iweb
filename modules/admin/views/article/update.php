@@ -2,7 +2,6 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-use yii2elRTE\yii2elRTE;
 use app\models\Categories;
 use kartik\widgets\DatePicker;
 use kartik\widgets\SwitchInput;
@@ -28,13 +27,15 @@ $this->title = 'Article Management';
                 ],
     ]);
     ?>
-    <div class="page-header">
-        <?= Html::encode($this->title) ?> [<?php echo ($model->id) ? "แก้ไข" : "สร้างใหม่"; ?>]
-        <div class="form-group pull-right">
-            <?= Html::submitButton('<i class="glyphicon glyphicon-ok"></i> บันทึกข้อมูล', ['class' => 'btn btn-primary']) ?>
-            <?= Html::resetButton('<i class="glyphicon glyphicon-remove"></i> ยกเลิก', ['class' => 'btn', 'onclick' => 'history.back();']) ?>
-        </div>
-    </div>    
+    <div class="row">
+        <div class="page-header">
+            <?= Html::encode($this->title) ?> [<?php echo ($model->id) ? "แก้ไข" : "สร้างใหม่"; ?>]
+            <div class="form-group pull-right">
+                <?= Html::submitButton('<i class="glyphicon glyphicon-ok"></i> บันทึกข้อมูล', ['class' => 'btn btn-danger']) ?>
+                <?= Html::resetButton('<i class="glyphicon glyphicon-remove"></i> ยกเลิก', ['class' => 'btn', 'onclick' => 'history.back();']) ?>
+            </div>
+        </div>    
+    </div>
     <div class="row">
         <div class="col-lg-8">
 
@@ -42,26 +43,15 @@ $this->title = 'Article Management';
             <div class="form-group required" style="padding-left: 0px; padding-right: 10px;">
                 <label>เนื้อหาทั้งหมด (ขนาดภาพ: 390 x 293 หรือ Scale 4:3)</label>
                 <?php
-                $url1 = Yii::$app->getAssetManager()->publish(Yii::getAlias('@yii2elRTE'));
+                //$url1 = Yii::$app->getAssetManager()->publish(Yii::getAlias('@yii2elRTE'));
                 if (Yii::$app->user->can('Administrator')) {
                     $folder = '';
                 } else {
                     $folder = "Edit_" . Yii::$app->user->identity->gid;
                 }
-//                echo yii2elRTE::widget(
-//                        array(
-//                            'model' => $model,
-//                            'modelName' => 'Article',
-//                            'attribute' => 'fulltexts',
-//                            'baseUrl' => $url1[1],
-//                            'folder' => $folder,
-//                        )
-//                );
-
-                //Yii::$app->session->set('KCFINDER', ['disabled' => false, 'uploadURL' => Yii::getAlias('@web') . '/images',]);
                 echo $form->field($model, 'fulltexts')->widget(CKEditor::className(), [
-                    'options' => ['rows' => 6],
-                    'preset' => 'full'
+                    'options' => ['rows' => 5],
+                    'preset' => 'standard'
                 ]);
                 echo "<br/>";
                 ?>
@@ -80,10 +70,6 @@ $this->title = 'Article Management';
                 ],
                 'inlineLabel' => false,
             ]);
-            echo $form->field($model, 'sci')->checkbox();
-            echo $form->field($model, 'isc')->checkbox();
-            echo $form->field($model, 'nbs')->checkbox();
-            echo $form->field($model, 'la')->checkbox();
             echo $form->field($model, 'startdate')->widget(DatePicker::classname(), [
                 'options' => ['placeholder' => 'เริ่มวันที่', 'style' => 'width: 160px;'],
                 'pluginOptions' => [
@@ -105,49 +91,51 @@ $this->title = 'Article Management';
     if (Yii::$app->user->can('Administrator')) {
         ?>
         <div class="row">
-            <?php
-            echo $form->field($model, 'upload_files[]')->widget(FileInput::classname(), [
-                'options' => ['multiple' => true],
-                'pluginOptions' => [
-                    'showPreview' => true,
-                    'showUpload' => false,
-                    'showCaption' => false,
-                    'uploadClass' => 'btn btn-info',
-                    'removeClass' => 'btn btn-danger',
-                    'elCaptionText' => '#customCaption'
-                ]
-            ]);
-            ?>
-            <div class="file-input">
-                <div class="file-preview-thumbnails">            
-                    <?php
-                    $mPath = \Yii::getAlias('@webroot') . '/images/article/news_' . $model->id;
-                    $mUrl = \Yii::getAlias('@web') . '/images/article/news_' . $model->id;
-                    if (!is_dir($mPath)) {
-                        \yii\helpers\BaseFileHelper::createDirectory($mPath);
-                    }
-                    foreach (scandir($mPath) as $img) {
-                        if ($img != '.' && $img != '..' && $img != 'thumb') {
-                            $mThumb = $mUrl . '/thumb/' . $img;
-                            //ตรวจสอบภาพตัวอย่าง ว่าถูกสร้างขึ้นมาหรือยัง
-                            if (!file_exists($mThumb)) {
-                                //ตรวจสอบโฟลเดอร์ภาพตัวอย่าง
-                                if (!is_dir($mPath . '/thumb')) {
-                                    \yii\helpers\BaseFileHelper::createDirectory($mPath . '/thumb/');
-                                }
-                                //สร้างภาพตัวอ่ย่าง
-                                $image = \Yii::$app->image->load($mPath . '/' . $img);
-                                $image->resize(250, 250);
-                                $image->save($mPath . '/thumb/' . $img);
-                            }
-                            echo '<div class="file-preview-frame">';
-                            echo '<div class="close fileinput-remove text-right"><a href="' . Url::to(['article/delimage', 'id' => $model->id, 'file' => $img]) . '">×</a></div>';
-                            echo '<img src="' . $mThumb . '" class="file-preview-image"/>';
-                            echo '</div>';
+            <div class="col-md-12">
+                <?php
+                echo $form->field($model, 'upload_files[]')->widget(FileInput::classname(), [
+                    'options' => ['multiple' => true],
+                    'pluginOptions' => [
+                        'showPreview' => true,
+                        'showUpload' => false,
+                        'showCaption' => false,
+                        'uploadClass' => 'btn btn-info',
+                        'removeClass' => 'btn btn-danger',
+                        'elCaptionText' => '#customCaption'
+                    ]
+                ]);
+                ?>
+                <div class="file-input">
+                    <div class="file-preview-thumbnails">            
+                        <?php
+                        $mPath = \Yii::getAlias('@webroot') . '/images/article/news_' . $model->id;
+                        $mUrl = \Yii::getAlias('@web') . '/images/article/news_' . $model->id;
+                        if (!is_dir($mPath)) {
+                            \yii\helpers\BaseFileHelper::createDirectory($mPath);
                         }
-                    }
-                    ?>
-                    <div class="clearfix"></div>
+                        foreach (scandir($mPath) as $img) {
+                            if ($img != '.' && $img != '..' && $img != 'thumb') {
+                                $mThumb = $mUrl . '/thumb/' . $img;
+                                //ตรวจสอบภาพตัวอย่าง ว่าถูกสร้างขึ้นมาหรือยัง
+                                if (!file_exists($mThumb)) {
+                                    //ตรวจสอบโฟลเดอร์ภาพตัวอย่าง
+                                    if (!is_dir($mPath . '/thumb')) {
+                                        \yii\helpers\BaseFileHelper::createDirectory($mPath . '/thumb/');
+                                    }
+                                    //สร้างภาพตัวอ่ย่าง
+                                    $image = \Yii::$app->image->load($mPath . '/' . $img);
+                                    $image->resize(250, 250);
+                                    $image->save($mPath . '/thumb/' . $img);
+                                }
+                                echo '<div class="file-preview-frame">';
+                                echo '<div class="close fileinput-remove text-right"><a href="' . Url::to(['article/delimage', 'id' => $model->id, 'file' => $img]) . '">×</a></div>';
+                                echo '<img src="' . $mThumb . '" class="file-preview-image"/>';
+                                echo '</div>';
+                            }
+                        }
+                        ?>
+                        <div class="clearfix"></div>
+                    </div>
                 </div>
             </div>
         </div>

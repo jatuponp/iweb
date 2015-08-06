@@ -1,5 +1,14 @@
-<div class="cms-default-index">
-    <h1>ยินดีต้อนรับ</h1>
+<?php
+
+use yii\helpers\Html;
+
+$this->title = 'Dashboard';
+?>
+<div class="row">
+    <div class="page-header"><?= Html::encode($this->title) ?></div>
+</div>
+<br/>
+<div class="admin-default-index">        
     <p>
         การบริการจัดการเว็บไซต์วิทยาเขตหนองคาย
     <ul>
@@ -8,8 +17,9 @@
         <li>หน่วยงานสามารถสร้างเมนูของหน่วยงานเองได้</li>
         <li>หน่วยงานสามารถแนบรูปภาพหรือไฟล์เอกสารได้ง่าย</li>
     </ul>
-    </p>
-    <p>
-        ออกแบบและพัฒนาโดย: นายจตุพล โพธิ์คำพก 
-    </p>
+</p>
+<p>
+    ออกแบบและพัฒนาโดย: นายจตุพล โพธิ์คำพก 
+</p>
 </div>
+

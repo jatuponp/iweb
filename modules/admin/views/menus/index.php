@@ -16,13 +16,16 @@ use yii\bootstrap\Modal;
 $this->title = 'Menus Management';
 //$langs = ($_POST['Categories']['langs']) ? $_POST['Categories']['langs'] : 'thai';
 ?>
-<div class="site-login">
+<div class="row">
     <div class="page-header"><?= Html::encode($this->title) ?></div>
+</div>
+<br/>
+<div class="site-login">    
     <div class="row">
         <div class="col-lg-4">
             <div class="input-group">
                 <div class="input-group-btn">
-                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-plus"></i> เพิ่มเมนู <span class="caret"></span></button>
+                    <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-plus"></i> เพิ่มเมนู <span class="caret"></span></button>
                     <ul class="dropdown-menu" role="menu">
                         <li><a href="<?= Url::to(['update', 'type' => 'article', 'parent_id' => $c->id]) ?>">เชื่อมโยงเนื้อหาเว็บไซต์,บทความ</a></li>
                         <li><a href="<?= Url::to(['update', 'type' => 'links', 'parent_id' => $c->id]) ?> ">เชื่อมโยงเว็บไซต์ภายนอก</a></li>
@@ -37,7 +40,7 @@ $this->title = 'Menus Management';
             Modal::begin([
                 'options' => ['id' => 'new'],
                 'header' => '<h4 style="margin:0; padding:0">ประเภทเมนู </h4>',
-                'toggleButton' => ['label' => '<i class="glyphicon glyphicon-th-large"></i>', 'class' => 'btn btn-primary pull-right'],
+                'toggleButton' => ['label' => '<i class="glyphicon glyphicon-th-large"></i>', 'class' => 'btn btn-danger pull-right'],
             ]);
             Pjax::begin();
             $form = ActiveForm::begin([
@@ -111,7 +114,6 @@ $this->title = 'Menus Management';
         </div>
     </div><br/>
     <?php
-    echo $model->langs;
     Pjax::begin();
     echo GridView::widget([
         'dataProvider' => $model->listCategory($model->langs),

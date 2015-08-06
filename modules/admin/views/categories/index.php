@@ -15,11 +15,14 @@ use yii\helpers\Url;
 $this->title = 'จัดการหมวดหมู่บทความ';
 //$langs = ($_POST['Categories']['langs']) ? $_POST['Categories']['langs'] : 'thai';
 ?>
-<div class="site-login">
+<div class="row">
     <div class="page-header"><?= Html::encode($this->title) ?></div>
+</div>
+<br/>
+<div class="site-login">
     <div class="row">
         <div class="col-lg-4">
-            <a href="<?= Url::to(['categories/update','langs'=>$model->langs]) ?>" class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i> เพิ่มหมวดหมู่</a>
+            <a href="<?= Url::to(['categories/update','langs'=>$model->langs]) ?>" class="btn btn-danger"><i class="glyphicon glyphicon-plus"></i> เพิ่มหมวดหมู่</a>
         </div>
         <div class="col-lg-8">
             <?php
@@ -36,7 +39,7 @@ $this->title = 'จัดการหมวดหมู่บทความ';
             <?php
             //echo $form->field($model, 'parent_id')->dropDownList(Categories::makeDropDown($model->langs), ['style' => 'margin-right: 10px;', 'onchange' => 'form.submit();']);
 //            $langOption = new \appCMS\language\LanguageCms();
-            echo $form->field($model, 'langs')->dropDownList(\app\models\tblLangs::makeDropDown(), ['style' => 'width: 120px;', 'onchange' => 'form.submit();']);
+            //echo $form->field($model, 'langs')->dropDownList(\app\models\tblLangs::makeDropDown(), ['style' => 'width: 120px;', 'onchange' => 'form.submit();']);
             ?>
 
             <?php ActiveForm::end(); ?>
@@ -45,6 +48,8 @@ $this->title = 'จัดการหมวดหมู่บทความ';
     <?php
     echo GridView::widget([
         'dataProvider' => $model->listCategory($model->langs),
+        'tableOptions' => ['class'=>'table table-striped'],
+        'layout' => "{items}",
         'columns' => [
             [
                 'class' => 'yii\grid\SerialColumn',

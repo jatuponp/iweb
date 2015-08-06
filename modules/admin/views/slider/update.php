@@ -23,13 +23,16 @@ $this->title = 'บริหารภาพสไลด์';
                 ],
     ]);
     ?>
+    <div class="row">
     <div class="page-header">
         <?= Html::encode($this->title) ?>
         <div class="form-group pull-right">
-            <?= Html::submitButton('<i class="glyphicon glyphicon-ok"></i> บันทึก', ['class' => 'btn btn-primary']) ?>
+            <?= Html::submitButton('<i class="glyphicon glyphicon-ok"></i> บันทึก', ['class' => 'btn btn-danger']) ?>
             <?= Html::resetButton('<i class="glyphicon glyphicon-remove"></i> ยกเลิก', ['class' => 'btn']) ?>
         </div>
     </div>
+    </div>
+    <br/>
     <div class="row">
         <div class="col-sm-12">
             <?= $form->field($model, 'cid')->dropDownList(app\models\TblSlidertype::makeDropDown(),['style'=>'width:200px; max-width: 400px;']); ?>

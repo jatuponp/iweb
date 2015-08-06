@@ -20,7 +20,7 @@ $this->registerJs('$().scroll(function(){$(".app-title").css("top",Math.max(0,25
         <?php $this->beginBody() ?>
         <?php
         NavBar::begin([
-            'brandLabel' => '<i class="glyphicon glyphicon-home"></i> มหาวิทยาลัยขอนแก่น วิทยาเขตหนองคาย',
+            'brandLabel' => '<div><i class="glyphicon glyphicon-grain" style="font-size: 46px;"></i>Content Management System</div>',
             'brandUrl' => Yii::$app->homeUrl,
             'innerContainerOptions' => [
                 'class' => 'container-fluid'
@@ -31,7 +31,11 @@ $this->registerJs('$().scroll(function(){$(".app-title").css("top",Math.max(0,25
             ],
         ]);
 
-        $menuItems1[] = ['label' => '<i class="glyphicon glyphicon-off"></i>  ออกจากระบบ', 'url' => ['/site/logout'], 'linkOptions' => ['data-method' => 'post']];
+        $menuItems1 = [
+            ['label' => '<i class="glyphicon glyphicon-th" style="font-size: 28px;"></i>', 'url' => ['/admin/default/index']],
+            ['label' => '<i class="glyphicon glyphicon-user" style="font-size: 28px;"></i>', 'url' => ['/admin/user/index']],
+            ['label' => '<i class="glyphicon glyphicon-off" style="font-size: 28px;"></i>', 'url' => ['/site/logout'], 'linkOptions' => ['data-method' => 'post']]
+        ];
 
         echo Nav::widget([
             'options' => ['class' => 'navbar-nav navbar-right'],
@@ -42,12 +46,12 @@ $this->registerJs('$().scroll(function(){$(".app-title").css("top",Math.max(0,25
         NavBar::end();
         ?>
 
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-xs-3 col-md-2">
+        <div class="container-fluid fill">
+            <div class="row" style="height: 100%; min-height: 100%;">
+                <div class="col-xs-3 col-md-2 cont">
                     <?php require 'menus.php'; ?>
                 </div>
-                <div class="col-xs-12 col-sm-9 col-md-10" style="background-color: #eee; border-left: 1px solid #DDD; min-height: 800px;">
+                <div class="col-xs-12 col-sm-9 col-md-10" style="overflow:auto; height: 100%; min-height: 100%; box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.3), 0px 0px 0px 0px rgba(255, 255, 255, 0.9) inset; background-color: #FCFCFC;">
                     <?= $content ?>
                 </div>
             </div>
