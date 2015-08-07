@@ -8,11 +8,12 @@ use yii\grid\GridView;
 $this->title = 'บริหารภาพกิจกรรม';
 ?>
 <div class="row">
-    <div class="page-header"><?= Html::encode($this->title) ?></div>
+    <div class="page-header"><i class="glyphicon glyphicon-picture page-header-icon"></i> <?= Html::encode($this->title) ?></div>
 </div>
 <br/>
 <div class="gallery-index">
-
+    <div class="dashboard_box">
+        <br/>
     <div class="row">
         <div class="col-lg-4">
             <a href="<?= Url::to(['/admin/gallery/update']) ?>" class="btn btn-danger"><i class="glyphicon glyphicon-plus"></i> สร้างอัลบั้ม</a>
@@ -78,5 +79,6 @@ $this->title = 'บริหารภาพกิจกรรม';
         ]
     ]);
     ?>
+</div>
 </div>
 

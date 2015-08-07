@@ -15,10 +15,12 @@ use yii\widgets\Pjax;
 $this->title = 'บริหารบทความ';
 ?>
 <div class="row">
-    <div class="page-header"><i class="glyphicon glyphicon-book"></i>&nbsp;<?= Html::encode($this->title) ?></div>
+    <div class="page-header"><i class="glyphicon glyphicon-book page-header-icon"></i>&nbsp;<?= Html::encode($this->title) ?></div>
 </div>
 <br/>
-<div class="site-login">    
+<div class="site-login">
+    <div class="dashboard_box">
+        <br/>
     <div class="row">
         <div class="col-lg-4">
             <a href="<?= Url::to(['update']) ?>" class="btn btn-danger"><i class="glyphicon glyphicon-plus"></i> เขียนบทความ</a>
@@ -109,4 +111,5 @@ $this->title = 'บริหารบทความ';
     ]);
     Pjax::end();
     ?> 
+    </div>
 </div>

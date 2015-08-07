@@ -29,7 +29,7 @@ $this->title = 'แฟ้มเอกสาร';
     ?>
     <div class="row">
         <div class="page-header">
-            <?= Html::encode($this->title) ?> [<?php echo ($model->id) ? "แก้ไข" : "สร้างใหม่"; ?>]
+            <i class="glyphicon glyphicon-file page-header-icon"></i> <?= Html::encode($this->title) ?> [<?php echo ($model->id) ? "แก้ไข" : "สร้างใหม่"; ?>]
             <div class="form-group pull-right">
                 <?= Html::submitButton('<i class="glyphicon glyphicon-ok"></i> บันทึกข้อมูล', ['class' => 'btn btn-danger']) ?>
                 <?= Html::resetButton('<i class="glyphicon glyphicon-remove"></i> ยกเลิก', ['class' => 'btn', 'onclick' => 'history.back();']) ?>
@@ -37,6 +37,7 @@ $this->title = 'แฟ้มเอกสาร';
         </div>
     </div>
     <br/>
+    <div class="dashboard_box" style="padding-top: 15px;">
     <div class="row">
         <div class="col-lg-8">
             <?= $form->field($model, 'cid')->dropDownList(['9' => 'ข่าวประชาสัมพันธ์บุคลากรคณะบริหารธุรกิจ', '12' => 'หน่วยอาคารและสถานที่'], [ 'style' => 'margin-right: 10px; width: 300px;']); ?>
@@ -55,6 +56,7 @@ $this->title = 'แฟ้มเอกสาร';
             <?= $form->field($model, 'id', ['options' => ['class' => 'sr-only']])->hiddenInput() ?>
             <?= $form->field($model, 'langs', ['options' => ['class' => 'sr-only']])->hiddenInput() ?>
         </div>
+    </div>
     </div>
     <?php ActiveForm::end(); ?>
 </div>

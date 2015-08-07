@@ -16,10 +16,12 @@ $this->title = 'จัดการหมวดหมู่บทความ';
 //$langs = ($_POST['Categories']['langs']) ? $_POST['Categories']['langs'] : 'thai';
 ?>
 <div class="row">
-    <div class="page-header"><?= Html::encode($this->title) ?></div>
+    <div class="page-header"><i class="glyphicon glyphicon-folder-open page-header-icon"></i> <?= Html::encode($this->title) ?></div>
 </div>
 <br/>
 <div class="site-login">
+    <div class="dashboard_box">
+        <br/>
     <div class="row">
         <div class="col-lg-4">
             <a href="<?= Url::to(['categories/update','langs'=>$model->langs]) ?>" class="btn btn-danger"><i class="glyphicon glyphicon-plus"></i> เพิ่มหมวดหมู่</a>
@@ -71,4 +73,5 @@ $this->title = 'จัดการหมวดหมู่บทความ';
         ]
     ]);
     ?>
+    </div>
 </div>

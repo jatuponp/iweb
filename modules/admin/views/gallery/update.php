@@ -24,7 +24,7 @@ $this->title = 'อัลบั้มภาพ';
     ?>
     <div class="row">
         <div class="page-header">
-            <?= Html::encode($this->title) ?> [<?php echo ($model->id) ? "แก้ไข" : "สร้างใหม่"; ?>]
+            <i class="glyphicon glyphicon-picture page-header-icon"></i> <?= Html::encode($this->title) ?> [<?php echo ($model->id) ? "แก้ไข" : "สร้างใหม่"; ?>]
             <div class="form-group pull-right">
                 <?= Html::submitButton('<i class="glyphicon glyphicon-ok"></i> บันทึกข้อมูล', ['class' => 'btn btn-danger']) ?>
                 <?= Html::resetButton('<i class="glyphicon glyphicon-remove"></i> ยกเลิก', ['class' => 'btn']) ?>
@@ -32,6 +32,7 @@ $this->title = 'อัลบั้มภาพ';
         </div>
     </div>
     <br/>
+    <div class="dashboard_box" style="padding-top: 15px;">
     <div class="row">
         <div class="col-lg-12">
             <?= $form->field($model, 'title')->input('text', ['style' => 'width: 500px;']) ?>
@@ -51,5 +52,6 @@ $this->title = 'อัลบั้มภาพ';
 
     </div>
     <?php ActiveForm::end(); ?>
+    </div>
 </div>
 
